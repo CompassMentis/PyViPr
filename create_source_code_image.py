@@ -3,9 +3,6 @@ import pygments
 import pygments.lexers
 import pygments.formatters
 
-source_file_name = '/home/coen/DevRoot/Clients/APress/video_003_optimisation/fibonacci.py'
-target_file_name = '/home/coen/Documents/Work/Clients/APress/Commissioned videos/003 - Benchmarking profiling and optimising/PyVipr Production Data/temp/fibonacci_code.jpg'
-
 
 def python_to_html(code, highlighted, file_name):
     options = {
@@ -40,7 +37,3 @@ def create_source_code_image(source_file_name, target_file_name, highlighted=Non
     """
 
     imgkit.from_string(html, target_file_name)
-
-
-if __name__ == '__main__':
-    create_source_code_image(source_file_name, target_file_name)
