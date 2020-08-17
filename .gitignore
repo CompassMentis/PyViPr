@@ -1,0 +1,10 @@
+.env
+static/*.png
+__pycache__
+.git-backup
+obsolete
+templates
+static/bootstrap*
+projects
+bash-scripts
+.idea

@@ -1,0 +1,94 @@
+/*@font-face {*/
+/*    font-family: "corbel";*/
+/*    src: url("file:///home/coen/.fonts/corbel.ttf");*/
+/*}*/
+/*@font-face {*/
+/*    font-family: "corbel-bold";*/
+/*    src: url("file:///home/coen/.fonts/corbelb.ttf");*/
+/*}*/
+
+/*h1, h2 {font-family: "corbel-bold";}*/
+/*h1 {font-size: 66pt;}*/
+/*h2 {font-size: 43pt;}*/
+
+/*h3, p {font-family: "corbel";}*/
+/*p {font-size: 24pt;}*/
+/*h3 {font-size: 36pt;}*/
+
+#parts_list {
+    background: cornflowerblue;
+}
+
+#slides_list {
+    background: darkgoldenrod;
+}
+
+/*#left_column {*/
+/*    width: 20%;*/
+/*    float: left;*/
+/*}*/
+
+/*#central_column {*/
+/*    width: 40%*/
+/*    float: left;*/
+/*}*/
+
+/*#right_column {*/
+/*    width: 40%;*/
+/*    float: right;*/
+/*    overflow-y: scroll;*/
+/*    height: 800px;*/
+/*}*/
+
+.step_lines, .step_lines_selected {
+    padding: 5px;
+    margin: 5px;
+}
+
+.step_lines {
+        border: brown 1px solid;
+}
+
+.step_lines_selected {
+        border: red 3px solid;
+}
+
+.slide_line {
+
+}
+
+.python_line {
+
+}
+
+.voice_over_line {
+
+}
+
+#main_voice_over_line {
+    border: brown 1px solid;
+    padding: 5px;
+    margin: 5px;
+    background: lightgoldenrodyellow;
+    font-size: 16pt;
+}
+
+img#slide_preview_image {
+    width: 600px;
+}
+
+.container {
+    width: 100%;
+}
+
+.recording-yes {
+    color: green;
+}
+
+.recording-no {
+    color: darkgray;
+}
+
+.recording-tbd {
+    color: red;
+}
