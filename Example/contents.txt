@@ -1,0 +1,172 @@
+[slide:title]
+
+[step 1]
+# Title slide, h1, h2, text
+t_h1 Main titles
+t_h2 Sub title
+t Hello
+vo (2) Hello there
+vo (3) How are you
+
+[step 4]
+vo (49) Another warm day today
+
+[slide:detail]
+
+[step 6]
+# Detail slide, ol
+t_h1 Another main title
+t_h2 Another subtitle
+t Some normal text
+t_ol
+t_li Numbered item
+t_li Numbered item
+t_end_ol
+
+[slide:detail]
+
+[step 50]
+# ul
+t_ul
+t_li Bullet point
+t_li Bullet point
+t_end_ul
+vo (7) Here is a numbered list and some bullet points
+
+[slide:detail]
+
+[step 51]
+# Nested
+
+[step 8]
+t_ol
+t_li Numbered item
+t_ul
+t_li Nested item - bullet point
+t_li Another bullet point
+t_end_ul
+t_li Another numbered item
+t_end_ol
+vo (9) Let's add a nested list
+
+[step 10]
+t Back to normal text
+vo (11) And finish off with some normal text
+
+[slide:detail]
+
+[step 12]
+# Show and hide code, alternate with slide
+t_h1 Code demo
+t_ul
+t_li First bullet point
+vo (13) Let me tell you about this bullet point
+
+[step 14]
+t_li Final bullet point
+t_end_ul
+vo (15) And about the second point
+
+[step 16]
+c_show_code fibonacci.py
+vo (17) How not to calculate a fibonacci number
+vo (18) Really, just don't
+
+[step 19]
+t Some general text
+c_hide_code
+vo (20) Back to the slide
+
+[step 21]
+vo (22) Here is a list of files
+$ls *
+
+[step 23]
+vo (24) Just use ls
+
+[step 25]
+c_hide_demo
+vo (26) And back to the slide
+
+[step 27]
+vo (28) Continuing the demo
+$echo "Hello"
+
+[step 29]
+c_clear_demo
+vo (30) Demo, but in a clear terminal
+$echo "Fresh start"
+
+[step 31]
+c_hide_demo
+vo (32) Finally back to the slide
+
+[slide:detail]
+
+[step 33]
+# Switch between Python and bash
+t_h1 More demos
+t_ul
+t_li ls to list files
+vo (34) Here are some files
+$ls
+
+[step 35]
+t_li print in Python
+vo (36) And some Python code
+>>>print('Hello')
+
+[step 37]
+t_li sums in Python
+vo (38) Look, a sum
+>>>print(5 * 6)
+
+[step 39]
+t_li echo to show text
+vo (40) Echo to show some text
+$echo "Hello"
+
+[step 41]
+t_end_ul
+t Plain text
+c_hide_demo
+vo (42) Back to normal
+
+[slide:detail]
+
+[step 43]
+# Full screen demo
+t_h1 Full screen demo
+vo (44) A sum in Python
+>>>a = 10
+>>>print(5 * a)
+
+[step 45]
+vo (46) And another one
+>>>print(6 * a)
+
+[step 47]
+vo (48) Any Python files in this folder??
+$ls *.py
+
+[step 52]
+vo (53) Another comment about this demo
+
+[slide:detail]
+
+[step 54]
+# Image
+t_h1 Slide with a picture
+c_show_image test.png
+vo (55) And here is a picture
+
+[step 57]
+c_show_image test2.png
+vo (58) And another picture
+
+[slide:detail]
+
+[step 56]
+# Include a video on a 1 column slide
+# c_show_video test_set_data_structures_1_00.mp4
+t_h1 Slide with video
