@@ -1,22 +1,17 @@
 LAST_FRAME_OFFSET = 1
 
+
 class Settings:
     lines = [line.strip() for line in open('projects/live_project.txt')]
     root_path = lines[-1]
     default_part = next(part[1:].strip() for part in lines if part.startswith('*'))
-    # default_part = 'part2_6_be_lazy'
-    # root_path = '/home/coen/Documents/Work/Clients/APress/Commissioned videos/003 - Benchmarking profiling and optimising/PyVipr Production Data/'
-    # root_path = '/home/coen/Documents/Work/Clients/APress/Commissioned videos/004 - Asynchronous Programming with Threads and Processes/PyViPr Production Data/'
     home_path = '/home/coen/DevRoot/pyViPr/'
     templates_path = f'{home_path}templates/'
     static_path = f'{root_path}static/'
     final_videos_path = f'{root_path}final/'
     production_videos_path = f'{root_path}production/'
-    # final_slides_path = f'{root_path}final/slides/'
     obs_recordings_path = root_path + 'OBS recordings/'
     images_path = f'{root_path}source_images/'
-    # pre_voice_over_delay = 0.5
-    # post_voice_over_delay = pre_voice_over_delay
 
     # Each step should take at least .. seconds, even if no voice over or demo
     minimum_step_duration = 2

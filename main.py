@@ -1,9 +1,8 @@
 import os
 import collections
 
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, request
 
-# from part import read_parts
 from recording import AudioRecorder
 from settings import Settings
 from part import Part
@@ -44,10 +43,6 @@ def section_list():
         sections=sections
     )
 
-# def redirect_to_top():
-#     # return redirect('/part2_3_text/1/1')
-#     return redirect('/part2_4_making_decisions/1/1')
-
 
 @app.route('/<string:part_name>/<int:slide_id>/<int:step_id>/<int:vo_line_id>')
 def parts_list(part_name, slide_id, step_id, vo_line_id):
@@ -75,10 +70,6 @@ def parts_list(part_name, slide_id, step_id, vo_line_id):
     except StopIteration:
         vo_line = slide.first_vo_line
         print('vo line not found:', vo_line_id)
-
-
-    # step.generate_slide_preview_image()
-    # slide.create_slide_image_to_step(step)
 
     return render_template(
         'main.html',

@@ -52,7 +52,6 @@ class AudioRecorder:
     def stop_recording(self):
         self.recording = False
 
-    # @staticmethod
     def list_recordings(self, part_name, vo_line_id):
         folder = self.target_path(part_name)
         result = []

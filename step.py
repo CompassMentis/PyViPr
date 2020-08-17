@@ -77,14 +77,6 @@ def replace_lines_commands(lines, previous_lines):
     return result
 
 
-# def tidy_up_line_numbers(lines):
-#     """
-#     For lines starting with c_show_code tidy up the line numbers
-#         replace 5 - 10 with 5, 6, 7, 8, 9, 10
-#     :param lines:
-#     :return:
-#     """
-
 def pre_process_step_lines(lines, previous_lines):
     # c_show_and_run --> c_show and >>>python
     # c_lines -> c_show <line numbers>
@@ -92,7 +84,6 @@ def pre_process_step_lines(lines, previous_lines):
     # and maybe more
     lines = replace_show_and_run_lines(lines)
     lines = replace_lines_commands(lines, previous_lines)
-    # lines = tidy_up_line_numbers(lines)
 
     return lines
 
@@ -266,10 +257,6 @@ class Step:
         name = command.split(' ', 1)[1]
         return f'{Settings.root_path}source_videos/{name}'
 
-    # @property
-    # def show_video_trimmed_target(self):
-    #     return f'{self.build_folder}/trimmed_source_video_{self.id:05}.mp4'
-
     @property
     def last_demo_frame_target(self):
         """
@@ -394,19 +381,12 @@ vo_lines:
         if self.slide.type == 'detail':
             html = html.replace('{width}', str(width)).replace('{height}', str(height))
 
-        # width, height = {
-        #     'title': Settings.TitleSlide.text_size,
-        #     'detail': Settings.TwoColumnSlide.text_size
-        # }[self.slide.type]
-
         imgkit.from_string(
             html,
             target,
             options={
                 'crop-w': str(width),
                 'crop-h': str(height),
-                # 'crop-w': '690',
-                # 'crop-h': '605',
             }
         )
 
@@ -537,10 +517,6 @@ vo_lines:
 
         highlighted = line_numbers_from_command(' '.join(remainder))
 
-        # if highlighted:
-        #     highlighted = [int(linenumber) for linenumber in highlighted.split(',')]
-        # else:
-        #     highlighted = None
         target = self.source_code_image_target
 
         if file_operations.already_up_to_date(source, target):
@@ -575,10 +551,6 @@ vo_lines:
     def hide_code_command(self):
         return 'c_hide_code' in self.command_lines
 
-    # @property
-    # def hide_image_command(self):
-    #     return 'c_hide_image' in self.command_lines
-    #
     @property
     def shows_demo(self):
         if self.demo_lines:
@@ -590,8 +562,6 @@ vo_lines:
                 result = True
             elif step.hide_demo_command:
                 result = False
-            # elif step.show_code_command:
-            #     result = False
 
             if step == self:
                 return result
@@ -789,8 +759,6 @@ vo_lines:
                 )
 
         if self.shows_image:
-            # TODO: Handle images on two column slides
-            # assert columns == 1
             to_combine.append(
                 (
                     self.image_source,
@@ -856,22 +824,6 @@ vo_lines:
 
         video_and_sound_operations.image_to_video(source, duration, target)
 
-    # def generate_show_video(self):
-    #     if not self.show_video_command:
-    #         return
-    #
-    #     source = self.show_video_source
-    #     target = self.show_video_trimmed_target
-    #
-    #     if file_operations.already_up_to_date(source, target):
-    #         return
-    #
-    #     command = f'cp "{source}" "{target}'
-    #     print(command)
-    #     os.system(command)
-    #
-    #     # video_and_sound_operations.crop_video(source, target, Settings.OneColumnSlide.demo_size)
-
     def generate_text_and_demo_video(self):
         """
         Put the demo video on top of the text video
@@ -921,9 +873,6 @@ vo_lines:
                 return
 
             video_and_sound_operations.add_silent_audio_to_video(video_source, target)
-            # command = f'cp "{video_source}" "{target}"'
-            # print(command)
-            # os.system(command)
             return
 
         audio_source = self.combined_voice_over_target

@@ -112,8 +112,6 @@ class Part:
             print('No changes')
             return
 
-        # print(to_save)
-
         file_operations.backup_file(self.source_name)
 
         with open(self.source_name, 'w') as output_file:

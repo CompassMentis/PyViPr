@@ -54,9 +54,6 @@ class VOLine:
     @property
     def final_audio_recording_name(self):
         if self._final_audio_recording_name is None:
-            # if self.next_sub_step:
-            #     self._final_audio_recording_name = self.create_final_audio_recording()
-            # else:
             self._final_audio_recording_name = self.confirmed_recording
 
         return self._final_audio_recording_name

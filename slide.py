@@ -108,10 +108,9 @@ class Slide:
         """
         if self.slide_columns == 2:
             width, height = Settings.TwoColumnSlide.terminal_window
-            # width, height = 92, 39
         else:
             width, height = Settings.OneColumnSlide.terminal_window
-            # width, height = 120, 35
+
         terminal.set_size(width=width, height=height)
 
     def start_python(self):
