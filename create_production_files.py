@@ -15,8 +15,11 @@ from settings import Settings
 import file_operations
 
 file_operations.ensure_path(Settings.production_videos_path)
-lines = [line.strip().replace('*', '') for line in open('projects/live_project.txt') if line.strip()]
+with open('projects/live_project.txt') as input_file:
+    project = input_file.readline().strip()
+lines = [line.strip().replace('*', '') for line in open(f'projects/{project}') if line.strip()]
 prefix = lines[-2]
+
 assert prefix.startswith('prefix:')
 prefix = prefix.split(' ', 1)[1].strip()
 
@@ -26,11 +29,14 @@ for part_name in lines[:-2]:
 
     parts = part_name.split('_')
     assert parts[0].startswith('part')
-    part_number = int(parts[0][4:]) + 1
+    part_number = int(parts[0][4:])
     target_name = f'{prefix}Part{part_number}'
-    segment_number = int(parts[1])
-    if segment_number:
+    try:
+        segment_number = int(parts[1])
+    # if segment_number:
         target_name += f'Segment{segment_number}'
+    except ValueError:
+        pass
     target_name += '.mp4'
 
     command = f'cp "{source_name}" "{Settings.production_videos_path}{target_name}"'

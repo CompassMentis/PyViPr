@@ -68,9 +68,12 @@ def paste_video_unto_another(background_source, foreground_source, foreground_lo
 
 def combine_audio_and_video(audio_source, video_source, target, starting_delay):
     # Delay audio source with <starting_delay> seconds
-    os.system(
-        f'ffmpeg -y -itsoffset {starting_delay} -i "{audio_source}" -i "{video_source}" -c:v copy -c:a aac -strict experimental "{target}"'
-    )
+
+    # From https://linuxpip.org/ffmpeg-combine-audio-video/
+    # -map 0:v:0 means that select the first input file (INPUT_FILE.mp4), then select the first (0) video stream. The first number (0) is the index of the first input file, the latter is the index number of the video stream.
+    command = f'ffmpeg -y -itsoffset {starting_delay} -i "{audio_source}" -i "{video_source}" -c:v copy -c:a aac -map 1:v:0 -map 0:a:0 -strict experimental "{target}"'
+    print(command)
+    os.system(command)
 
 
 def combine_videos(sources, target):

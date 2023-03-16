@@ -381,14 +381,21 @@ vo_lines:
         if self.slide.type == 'detail':
             html = html.replace('{width}', str(width)).replace('{height}', str(height))
 
-        imgkit.from_string(
-            html,
-            target,
-            options={
-                'crop-w': str(width),
-                'crop-h': str(height),
-            }
-        )
+        # wkhtmltoimage often raises an OSError
+        # On the second try it usually works
+        for _ in range(3):
+            try:
+                imgkit.from_string(
+                    html,
+                    target,
+                    options={
+                        'crop-w': str(width),
+                        'crop-h': str(height),
+                    }
+                )
+                break
+            except OSError:
+                pass
 
     def build_demo_needed(self):
         # No text lines, no need to create a slide for this step
@@ -417,7 +424,7 @@ vo_lines:
 
         # Crop recording
         command = f'ffmpeg -y -i "{source}" ' \
-                  f'-filter:v "crop={target_size[0]}:{target_size[1]}:0:30" "{target}"'
+                  f'-filter:v "crop={target_size[0]}:{target_size[1]}:0:0" "{target}"'
         print(command)
         os.system(command)
 
@@ -459,6 +466,7 @@ vo_lines:
         print(f'building {self.demo_video_target}')
 
         # Move any old recordings out of the way
+        file_operations.ensure_path(f"{Settings.obs_recordings_path}obsolete/")
         os.system(f'mv "{Settings.obs_recordings_path}"20*.mp4 "{Settings.obs_recordings_path}obsolete/"')
 
         # Start recording
@@ -472,8 +480,11 @@ vo_lines:
         # Run the code
         terminal.run_python_code(self.python_lines + self.terminal_lines, character_delay=0.1, line_delay=0.5)
 
-        # Stop recording
-        terminal.press_button('stop_recording_button')
+        # Stop recording - even though start button no longer visible
+        # we've cached its location
+        # It has been replaced by the stop button, so this will stop the recording
+        terminal.press_button('start_recording_button')
+        # terminal.press_button('stop_recording_button')
 
         # Wait for OBS to save the recording
         time.sleep(2)

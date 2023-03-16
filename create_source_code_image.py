@@ -24,10 +24,16 @@ def create_source_code_image(source_file_name, target_file_name, highlighted=Non
     html = python_to_html(source_code, highlighted, file_name)
     stylesheet = pygments.formatters.HtmlFormatter().get_style_defs()
 
+    # parts = stylesheet.split('\n')
+    # parts = [part for part in parts if '.hll' not in part]
+    # stylesheet = '\n'.join(parts)
+    #
+
     html = f"""
     <head>
         <style>
             { stylesheet }
+            .hll {{border: 1px red solid;}}
         </style>
     </head>
 
@@ -35,5 +41,7 @@ def create_source_code_image(source_file_name, target_file_name, highlighted=Non
         {html}
     </body>
     """
+
+    html = html.replace('.hll { background-color: #ffffcc }', '')
 
     imgkit.from_string(html, target_file_name)

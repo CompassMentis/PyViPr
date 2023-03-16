@@ -109,7 +109,7 @@ class Part:
 
         if to_save == (''.join(self.raw_lines)).strip():
             # Nothing changed - done
-            print('No changes')
+            # print('No changes')
             return
 
         file_operations.backup_file(self.source_name)

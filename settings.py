@@ -2,7 +2,9 @@ LAST_FRAME_OFFSET = 1
 
 
 class Settings:
-    lines = [line.strip() for line in open('projects/live_project.txt')]
+    with open('projects/live_project.txt') as input_file:
+        project = input_file.readline().strip()
+    lines = [line.strip() for line in open(f'projects/{project}')]
     root_path = lines[-1]
     default_part = next(part[1:].strip() for part in lines if part.startswith('*'))
     home_path = '/home/coen/DevRoot/pyViPr/'
@@ -10,6 +12,7 @@ class Settings:
     static_path = f'{root_path}static/'
     final_videos_path = f'{root_path}final/'
     production_videos_path = f'{root_path}production/'
+    slide_deck_path = f'{root_path}slide_deck/'
     obs_recordings_path = root_path + 'OBS recordings/'
     images_path = f'{root_path}source_images/'
 
@@ -18,7 +21,8 @@ class Settings:
 
     temp_folder = root_path + 'temp/'
     build_folder = root_path + 'build/'
-    source_code_path = '/home/coen/demos/'
+    # source_code_path = '/home/coen/demos/'
+    source_code_path = f'{root_path}demos/'
 
     target_size = 1280, 720
 
@@ -50,13 +54,13 @@ class Settings:
         demo_location = 745, 45
         # Not sure why, but by default the final frame gets offset a little, cause a jump in the video
         last_demo_frame_location = demo_location[0] - LAST_FRAME_OFFSET, demo_location[1] - LAST_FRAME_OFFSET
-        demo_size = 485, 585
+        demo_size = 480, 580
 
         code_location = 30, 120
-        code_size = 695, 560
+        code_size = 695, 580
 
         # terminal_window = 40, 25
-        terminal_window = 59, 34
+        terminal_window = 64, 34
 
     title_background = f'{templates_path}title_slide_background.png'
     detail_background = f'{templates_path}detail_slide_background.png'
