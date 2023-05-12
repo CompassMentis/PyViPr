@@ -1,3 +1,4 @@
+# TODO: Combine with build, specify what to build as an extra argument
 import argparse
 
 from part import Part

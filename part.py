@@ -1,9 +1,14 @@
+"""
+A part is made up of one or more slides
+"""
+
 from settings import Settings
 from slide import Slide
 import file_operations
 import video_and_sound_operations
 
 
+# TODO: Move this into the main class
 def fill_in_missing_ids(part):
     ids = []
     for slide in part.slides:
@@ -27,6 +32,7 @@ def fill_in_missing_ids(part):
                     next_id += 1
 
 
+# TODO: Move this into the main class
 def break_lines_into_slides(lines):
     """
     Each slide starts with a line starting with [slide:

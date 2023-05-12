@@ -9,6 +9,7 @@
     From: part1_1_threads
 """
 
+# TODO: Document this code
 import os
 
 from settings import Settings

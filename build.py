@@ -1,3 +1,16 @@
+"""
+Build a specified part or the default part
+- Slides
+- Record code demos
+- Turn source code into syntax highlighted images
+- Combine all the parts into a single video, one small video per step
+
+Note: Does not combine the step videos into a part video
+
+Syntax: python build.py [part-name]
+
+The default part is set in Settings.default_part
+"""
 import argparse
 
 from part import Part
